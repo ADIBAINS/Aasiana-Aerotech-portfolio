@@ -3,7 +3,14 @@ import { ArrowRight, Check } from "lucide-react";
 import { PageHero } from "@/components/PageHero";
 import { services } from "@/lib/site";
 
-export const metadata = { title: "Services" };
+export const metadata = {
+  title: "Services",
+  description: "Aviation compliance services — airworthiness management, DGCA liaison, landing & overflight permits, aircraft induction, security approvals, and more.",
+  openGraph: {
+    title: "Services | Aasiana Aerotech",
+    description: "Integrated support from technical review to regulatory clearance across the full aviation approval lifecycle.",
+  },
+};
 
 export default function ServicesPage() {
   return (

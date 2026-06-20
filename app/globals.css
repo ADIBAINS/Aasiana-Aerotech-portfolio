@@ -234,6 +234,8 @@ p { line-height: 1.75; color: var(--muted); }
 .form-success h2 { margin-bottom: 10px; }
 .error-page { min-height: 100vh; display: grid; align-content: center; justify-items: start; max-width: 720px; padding: 48px; margin: auto; }
 .error-page h1 { font-size: clamp(2.8rem,7vw,5.5rem); line-height: .95; }
+.page-loader { min-height: 80vh; display: grid; place-items: center; }
+.page-loader__spinner { width: 28px; height: 28px; border: 3px solid var(--line); border-top-color: var(--blue); border-radius: 50%; animation: spin .7s linear infinite; }
 
 .footer { background: #110b25; color: white; padding: 75px 0 25px; border-top: 4px solid var(--red); }
 .footer-grid { display: grid; grid-template-columns: 1.6fr .7fr 1fr 1.3fr; gap: 60px; padding-bottom: 60px; }

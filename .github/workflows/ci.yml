@@ -1,0 +1,38 @@
+name: CI
+
+on:
+  push:
+    branches: [main, dev]
+  pull_request:
+    branches: [main]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run typecheck
+      - run: npm run build
+        env:
+          RESEND_API_KEY: skip
+          CONTACT_FROM_EMAIL: test@example.com
+          CONTACT_TO_EMAIL: test@example.com
+          NEXT_PUBLIC_SITE_URL: https://example.com
+          NEXT_PUBLIC_CONTACT_EMAIL: test@example.com
+          NEXT_PUBLIC_CONTACT_PHONE: "+91 0000000000"
+          NEXT_PUBLIC_CONTACT_PHONE_HREF: "+910000000000"
+          NEXT_PUBLIC_CONTACT_WHATSAPP: "910000000000"
+          NEXT_PUBLIC_CONTACT_ADDRESS: New Delhi, India
+          NEXT_PUBLIC_CONTACT_HOURS: "Monday–Saturday, 09:30–18:00 IST"
+          NEXT_PUBLIC_LINKEDIN_URL: https://linkedin.com
+          NEXT_PUBLIC_SENTRY_DSN: ""
+          SENTRY_DSN: ""
+          SENTRY_ORG: ""
+          SENTRY_PROJECT: ""
+          SENTRY_AUTH_TOKEN: ""
