@@ -2,7 +2,14 @@ import Link from "next/link";
 import { ArrowRight, CheckCircle2, Cpu, Handshake, Shield } from "lucide-react";
 import { PageHero } from "@/components/PageHero";
 
-export const metadata = { title: "About" };
+export const metadata = {
+  title: "About",
+  description: "Aasiana Aerotech provides aviation regulatory and technical consultancy — airworthiness, DGCA liaison, aircraft induction and flight permissions.",
+  openGraph: {
+    title: "About | Aasiana Aerotech",
+    description: "A focused partner for aviation's most exacting regulatory and technical processes.",
+  },
+};
 
 export default function AboutPage() {
   return (

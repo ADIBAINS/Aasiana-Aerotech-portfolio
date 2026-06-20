@@ -3,7 +3,14 @@ import { ContactForm } from "@/components/ContactForm";
 import { PageHero } from "@/components/PageHero";
 import { services, siteConfig } from "@/lib/site";
 
-export const metadata = { title: "Contact" };
+export const metadata = {
+  title: "Contact",
+  description: "Get in touch with Aasiana Aerotech for aviation compliance, airworthiness, and regulatory clearance support in India.",
+  openGraph: {
+    title: "Contact | Aasiana Aerotech",
+    description: "Tell us what needs to move forward. Share the aircraft, approval or operational requirement.",
+  },
+};
 
 export default async function ContactPage({ searchParams }: { searchParams: Promise<{ service?: string }> }) {
   const requestedService = (await searchParams).service || "";
