@@ -64,28 +64,28 @@ export function ContactForm({ defaultService = "" }: { defaultService?: string }
     <form className="contact-form" onSubmit={submit}>
       <label className="form-honeypot" aria-hidden="true">Website<input name="website" tabIndex={-1} autoComplete="off" /></label>
       <div className="field-row">
-        <label>Full name <span>*</span><input name="name" required autoComplete="name" placeholder="Your name" aria-invalid={Boolean(fieldErrors.name)} />{fieldErrors.name && <small className="field-error">{fieldErrors.name[0]}</small>}</label>
-        <label>Company<input name="company" autoComplete="organization" placeholder="Organisation name" /></label>
+        <label htmlFor="contact-name"><span className="field-label">Full name <b>*</b></span><input id="contact-name" name="name" required minLength={2} maxLength={100} autoComplete="name" placeholder="Your name" aria-invalid={Boolean(fieldErrors.name)} aria-describedby={fieldErrors.name ? "contact-name-error" : undefined} />{fieldErrors.name && <small id="contact-name-error" className="field-error">{fieldErrors.name[0]}</small>}</label>
+        <label htmlFor="contact-company"><span className="field-label">Company</span><input id="contact-company" name="company" maxLength={120} autoComplete="organization" placeholder="Organisation name" aria-invalid={Boolean(fieldErrors.company)} aria-describedby={fieldErrors.company ? "contact-company-error" : undefined} />{fieldErrors.company && <small id="contact-company-error" className="field-error">{fieldErrors.company[0]}</small>}</label>
       </div>
       <div className="field-row">
-        <label>Email address <span>*</span><input name="email" type="email" required autoComplete="email" placeholder="you@company.com" aria-invalid={Boolean(fieldErrors.email)} />{fieldErrors.email && <small className="field-error">{fieldErrors.email[0]}</small>}</label>
-        <label>Phone number<input name="phone" type="tel" autoComplete="tel" placeholder="+91" /></label>
+        <label htmlFor="contact-email"><span className="field-label">Email address <b>*</b></span><input id="contact-email" name="email" type="email" required maxLength={200} autoComplete="email" inputMode="email" placeholder="you@company.com" aria-invalid={Boolean(fieldErrors.email)} aria-describedby={fieldErrors.email ? "contact-email-error" : undefined} />{fieldErrors.email && <small id="contact-email-error" className="field-error">{fieldErrors.email[0]}</small>}</label>
+        <label htmlFor="contact-phone"><span className="field-label">Phone number</span><input id="contact-phone" name="phone" type="tel" maxLength={40} autoComplete="tel" inputMode="tel" placeholder="+91 00000 00000" aria-invalid={Boolean(fieldErrors.phone)} aria-describedby={fieldErrors.phone ? "contact-phone-error" : undefined} />{fieldErrors.phone && <small id="contact-phone-error" className="field-error">{fieldErrors.phone[0]}</small>}</label>
       </div>
-      <label>Service required <span>*</span>
-        <select name="service" required defaultValue={defaultService} aria-invalid={Boolean(fieldErrors.service)}>
+      <label htmlFor="contact-service"><span className="field-label">Service required <b>*</b></span>
+        <select id="contact-service" name="service" required defaultValue={defaultService} aria-invalid={Boolean(fieldErrors.service)} aria-describedby={fieldErrors.service ? "contact-service-error" : undefined}>
           <option value="" disabled>Select a service</option>
           {services.map((service) => <option key={service.title}>{service.title}</option>)}
           <option>Other / Not sure</option>
         </select>
-        {fieldErrors.service && <small className="field-error">{fieldErrors.service[0]}</small>}
+        {fieldErrors.service && <small id="contact-service-error" className="field-error">{fieldErrors.service[0]}</small>}
       </label>
-      <label>How can we assist? <span>*</span>
-        <textarea name="message" required minLength={10} maxLength={4000} rows={5} placeholder="Briefly describe the aircraft, approval or operational requirement." aria-invalid={Boolean(fieldErrors.message)} />
-        {fieldErrors.message && <small className="field-error">{fieldErrors.message[0]}</small>}
+      <label htmlFor="contact-message"><span className="field-label">How can we assist? <b>*</b></span>
+        <textarea id="contact-message" name="message" required minLength={10} maxLength={4000} rows={6} placeholder="Briefly describe the aircraft, approval or operational requirement." aria-invalid={Boolean(fieldErrors.message)} aria-describedby={fieldErrors.message ? "contact-message-error" : "contact-message-hint"} />
+        {fieldErrors.message ? <small id="contact-message-error" className="field-error">{fieldErrors.message[0]}</small> : <small id="contact-message-hint" className="field-hint">Include route and proposed date for time-sensitive movement requests.</small>}
       </label>
-      <label className="consent"><input name="consent" type="checkbox" required aria-invalid={Boolean(fieldErrors.consent)} /> <span>I consent to Aasiana Aerotech using these details to respond to my enquiry.</span></label>
-      {fieldErrors.consent && <small className="field-error">{fieldErrors.consent[0]}</small>}
-      {error && <p className="form-error" role="alert">{error}</p>}
+      <label className="consent" htmlFor="contact-consent"><input id="contact-consent" name="consent" type="checkbox" required aria-invalid={Boolean(fieldErrors.consent)} aria-describedby={fieldErrors.consent ? "contact-consent-error" : undefined} /> <span>I consent to Aasiana Aerotech using these details to respond to my enquiry.</span></label>
+      {fieldErrors.consent && <small id="contact-consent-error" className="field-error">{fieldErrors.consent[0]}</small>}
+      {error && <p className="form-error" role="alert" aria-live="polite">{error}</p>}
       <button className="button" type="submit" disabled={pending}>
         {pending ? <>Sending enquiry <LoaderCircle className="spin" size={17} /></> : <>Send enquiry <ArrowRight size={17} /></>}
       </button>

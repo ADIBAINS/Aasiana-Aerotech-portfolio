@@ -6,6 +6,7 @@ import { services } from "@/lib/site";
 export const metadata = {
   title: "Services",
   description: "Aviation compliance services — airworthiness management, DGCA liaison, landing & overflight permits, aircraft induction, security approvals, and more.",
+  alternates: { canonical: "/services" },
   openGraph: {
     title: "Services | Aasiana Aerotech",
     description: "Integrated support from technical review to regulatory clearance across the full aviation approval lifecycle.",
@@ -33,6 +34,29 @@ export default function ServicesPage() {
               </article>
             );
           })}
+        </div>
+      </section>
+      <section className="section service-difference">
+        <div className="container service-difference__grid">
+          <div className="service-difference__intro">
+            <p className="eyebrow eyebrow--light">What sets us apart</p>
+            <h2>Technical depth,<br /><em>regulatory precision.</em></h2>
+            <p>We combine aviation technical knowledge with practical regulatory experience. Our team understands what authorities need and how to present it.</p>
+          </div>
+          <ol className="service-difference__list">
+            {[
+              "Single point of coordination for all your compliance needs",
+              "Documentation-led approach with clear checklists and timelines",
+              "Established relationships with DGCA and other Indian aviation authorities",
+              "Proactive status communication and deadline-aware project management",
+              "Confidential handling of all operator records and technical data",
+            ].map((item, index) => (
+              <li key={item}>
+                <span>{String(index + 1).padStart(2, "0")}</span>
+                <strong>{item}</strong>
+              </li>
+            ))}
+          </ol>
         </div>
       </section>
       <section className="service-note">

@@ -4,7 +4,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { getSiteUrl } from "@/lib/site-url";
-import { siteConfig } from "@/lib/site";
+import { services, siteConfig } from "@/lib/site";
 import "./globals.css";
 
 const siteUrl = getSiteUrl();
@@ -13,7 +13,12 @@ export const metadata: Metadata = {
   title: { default: "Aasiana Aerotech | Aviation Compliance & Clearances", template: "%s | Aasiana Aerotech" },
   description: "Airworthiness, DGCA liaison, aircraft induction and flight permission support for aviation operators in India.",
   metadataBase: siteUrl,
-  alternates: { canonical: "/" },
+  applicationName: "Aasiana Aerotech",
+  authors: [{ name: "Aasiana Aerotech" }],
+  creator: "Aasiana Aerotech",
+  publisher: "Aasiana Aerotech",
+  keywords: ["aviation consultancy India", "airworthiness management", "DGCA liaison", "landing permission India", "overflight permits", "aircraft induction", "aviation regulatory compliance"],
+  robots: { index: true, follow: true },
   icons: { icon: [{ url: "/favicon.ico", sizes: "any" }, { url: "/icon.svg", type: "image/svg+xml" }], apple: "/apple-touch-icon.png" },
   openGraph: {
     title: "Aasiana Aerotech",
@@ -42,6 +47,14 @@ const jsonLd = {
   areaServed: "India",
   address: { "@type": "PostalAddress", addressLocality: "New Delhi", addressCountry: "IN" },
   sameAs: [siteConfig.linkedIn].filter(Boolean),
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Aviation consultancy services",
+    itemListElement: services.map((service) => ({
+      "@type": "Offer",
+      itemOffered: { "@type": "Service", name: service.title, description: service.description },
+    })),
+  },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
@@ -52,7 +65,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <link rel="dns-prefetch" href="https://o4511596799262720.ingest.us.sentry.io" />
       </head>
       <body>
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
         <a className="skip-link" href="#main-content">Skip to main content</a>
         <Header />
         <main id="main-content">{children}</main>

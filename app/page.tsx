@@ -5,6 +5,25 @@ import { AircraftBlueprint, FlightPathGraphic } from "@/components/AviationGraph
 import { HeroItem, HeroMotion, Reveal } from "@/components/Motion";
 import { services } from "@/lib/site";
 
+export const metadata = {
+  alternates: { canonical: "/" },
+};
+
+const clients = [
+  { name: "Aero Nomad", logo: "/images/clients/aero-nomad.png" },
+  { name: "AeroTransCargo", logo: "/images/clients/aerotranscargo.jpg" },
+  { name: "Aviation Horizons", logo: "/images/clients/aviation-horizons.jpg" },
+  { name: "Evelop", logo: "/images/clients/evelop.png" },
+  { name: "FlyPro", logo: "/images/clients/flypro.png" },
+  { name: "FlySky", logo: "/images/clients/flysky.png" },
+  { name: "Global Service Solutions", logo: "/images/clients/global-service-solutions.png" },
+  { name: "Hindustan Aeronautics Limited", logo: "/images/clients/hindustan-aeronautics-limited.png" },
+  { name: "Himalaya Airlines", logo: "/images/clients/himalaya-airlines.png" },
+  { name: "Navayuga", logo: "/images/clients/navayuga.png" },
+  { name: "Omega Air", logo: "/images/clients/omega-air.png" },
+  { name: "Fly SBS", logo: "/images/clients/fly-sbs.png" },
+];
+
 export default function Home() {
   return (
     <>
@@ -142,6 +161,33 @@ export default function Home() {
               {["Single point of coordination", "Clear documentation checklists", "Proactive status communication", "Confidential handling of records"].map((item) => <li key={item}><Check size={16} />{item}</li>)}
             </ul>
           </Reveal>
+        </div>
+      </section>
+
+      <section className="section clients" id="clients" aria-labelledby="clients-heading">
+        <div className="container">
+          <div className="clients__heading">
+            <div>
+              <p className="eyebrow">Client experience</p>
+              <h2 id="clients-heading">Trusted across aviation.</h2>
+            </div>
+            <p>Selected aviation organisations supported by Aasiana Aerotech across technical, regulatory and operational requirements.</p>
+          </div>
+          <div className="clients__grid">
+            {clients.map((client) => (
+              <div className="client-logo" key={client.name}>
+                <Image
+                  src={client.logo}
+                  alt={`${client.name} logo`}
+                  width={220}
+                  height={100}
+                  loading="lazy"
+                  sizes="(max-width: 640px) 44vw, (max-width: 900px) 22vw, 170px"
+                />
+              </div>
+            ))}
+          </div>
+          <p className="clients__note">Client marks are shown for identification only and remain the property of their respective owners.</p>
         </div>
       </section>
 

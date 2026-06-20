@@ -5,6 +5,7 @@ import { PageHero } from "@/components/PageHero";
 export const metadata = {
   title: "About",
   description: "Aasiana Aerotech provides aviation regulatory and technical consultancy — airworthiness, DGCA liaison, aircraft induction and flight permissions.",
+  alternates: { canonical: "/about" },
   openGraph: {
     title: "About | Aasiana Aerotech",
     description: "A focused partner for aviation's most exacting regulatory and technical processes.",
@@ -57,8 +58,8 @@ export default function AboutPage() {
       </section>
       <section className="experience-band">
         <div className="container experience-band__inner">
-          <div><p className="eyebrow eyebrow--light">Company credentials</p><h2>Experience and leadership details can be added here.</h2><p>This section is intentionally reserved for verified founder biographies, certifications, memberships and project milestones.</p></div>
-          <span className="editable-badge">Editable content placeholder</span>
+          <div><p className="eyebrow eyebrow--light">How we add value</p><h2>One accountable view across technical and regulatory work.</h2><p>We organise requirements, dependencies and open actions into a clear path that technical teams, operators and decision-makers can follow.</p></div>
+          <Link href="/services" className="button button--white">Explore services <ArrowRight size={17} /></Link>
         </div>
       </section>
       <section className="section section--compact">
