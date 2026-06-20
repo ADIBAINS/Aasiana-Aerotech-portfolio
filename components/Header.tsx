@@ -23,7 +23,7 @@ export function Header() {
         <Logo />
         <nav id="main-navigation" className={`main-nav ${open ? "main-nav--open" : ""}`} aria-label="Main navigation">
           {navigation.map((item) => (
-            <Link key={item.href} href={item.href} className={pathname === item.href ? "active" : ""} aria-current={pathname === item.href ? "page" : undefined}>
+            <Link key={item.href} href={item.href} onClick={() => setOpen(false)} className={pathname === item.href ? "active" : ""} aria-current={pathname === item.href ? "page" : undefined}>
               {item.label}
             </Link>
           ))}
